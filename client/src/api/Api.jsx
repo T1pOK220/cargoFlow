@@ -1,4 +1,6 @@
-const API_URL = import.meta.env.PATH_BACKEND;
+const API_URL = import.meta.env.VITE_API_URL;
+console.log(import.meta.env);
+console.log(API_URL);
 export const registration = async (FormBody) => {
     const res = await fetch(`${API_URL}registration`, {
         method: "POST",
