@@ -7,7 +7,7 @@ class CargoFlow{
             host: process.env.DB_HOST || "mysql-3116e2c1-oleg7pazuk-10ca.i.aivencloud.com",
             user: process.env.DB_USER || "avnadmin",
             port: process.env.DB_PORT || 21832,
-            database:process.env.DB_NAME || "defaultdb",
+            database:process.env.DB_NAME || "cargoflow",
             password: process.env.DB_PASSWORD,
            ssl: {
     rejectUnauthorized: false
