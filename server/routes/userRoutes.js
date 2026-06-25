@@ -1,0 +1,13 @@
+import express from "express";
+import * as userContrller from "../controllers/userController.js";
+import { AuthMiddleWare } from "../middlewares/AuthMiddlware.js";
+import upload from "../middlewares/uploadMiddlware.js";
+const router = express.Router();
+router.post("/api/registration", userContrller.registrationUser);
+router.post("/api/login", userContrller.LoginUser);
+router.get("/api/verify-token", userContrller.verifyToken);
+router.delete("/api/user/delete", AuthMiddleWare, userContrller.deleteUser);
+router.patch("/api/user/update", AuthMiddleWare, userContrller.UpdateUser);
+router.patch("/api/user/changePassword", AuthMiddleWare, userContrller.ChangePassword);
+router.patch("/api/users/avatar", upload.single("avatar"), AuthMiddleWare, userContrller.uploadAvatarController);
+export default router;

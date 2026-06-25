@@ -1,0 +1,15 @@
+import { db } from "../database/index.js";
+import Users from "./users.js";
+import Cargos from "./cargos.js";
+import Routes from "./routes.js";
+import Announcements from "./announcements.js";
+import Payments from "./payments.js";
+import Vehicles from "./vehicles.js";
+import Bills from "./bills.js";
+export const users = new Users(db);
+export const cargos = new Cargos(db);
+export const routes = new Routes(db);
+export const announcements = new Announcements(db);
+export const vehicles = new Vehicles(db);
+export const payments = new Payments(db);
+export const bills = new Bills(db);
