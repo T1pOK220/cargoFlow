@@ -1,6 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL;
-console.log(import.meta.env);
-console.log(API_URL);
+
 export const registration = async (FormBody) => {
     const res = await fetch(`${API_URL}registration`, {
         method: "POST",
@@ -21,6 +20,8 @@ export const login = async(FormBody) => {
                 body: JSON.stringify(FormBody)
     })
     const data = await res.json();
+    console.log(import.meta.env);
+console.log(API_URL);
     return {res:res,data:data};
 }
 export const verifyToken = async(token) => {
