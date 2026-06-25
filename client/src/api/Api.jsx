@@ -1,8 +1,6 @@
-import dotenv from "dotenv";
-dotenv.config();
-
+const API_URL = import.meta.env.PATH_BACKEND;
 export const registration = async (FormBody) => {
-    const res = await fetch(`${procces.env.PATH_BACKEND}registration`, {
+    const res = await fetch(`${API_URL}registration`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -13,7 +11,7 @@ export const registration = async (FormBody) => {
     return data;
 }
 export const login = async(FormBody) => {
-    const res = await fetch(`${procces.env.PATH_BACKEND}login`, {
+    const res = await fetch(`${API_URL}login`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -25,7 +23,7 @@ export const login = async(FormBody) => {
 }
 export const verifyToken = async(token) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}verify-token`, {
+        const res = await fetch(`${API_URL}verify-token`, {
         headers: {
             'Authorization': `Bearer ${token}`
         },
@@ -38,7 +36,7 @@ export const verifyToken = async(token) => {
 }
 export const createCargo = async (token,FormBody) => {
      try {
-         const res = await fetch(`${procces.env.PATH_BACKEND}cargos/create`, {
+         const res = await fetch(`${API_URL}cargos/create`, {
         method:"POST",
         headers: {
                 'Authorization': `Bearer ${token}`,
@@ -57,7 +55,7 @@ export const createCargo = async (token,FormBody) => {
 }
 export const getCargos = async (token) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}cargos`, {
+        const res = await fetch(`${API_URL}cargos`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -72,7 +70,7 @@ export const getCargos = async (token) => {
 }
 export const getCargosByFilter= async (token,FormBody) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}cargos/filter`, {
+        const res = await fetch(`${API_URL}cargos/filter`, {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -88,7 +86,7 @@ export const getCargosByFilter= async (token,FormBody) => {
 }
 export const getByUser = async(token) => {
     try {
-    const res = await fetch(`${procces.env.PATH_BACKEND}cargos/byUser`, {
+    const res = await fetch(`${API_URL}cargos/byUser`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -103,7 +101,7 @@ export const getByUser = async(token) => {
 }
 export const deleteUser = async (token) => {
    try {
-    const res = await fetch(`${procces.env.PATH_BACKEND}user/delete`, {
+    const res = await fetch(`${API_URL}user/delete`, {
             method: "DELETE",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -118,7 +116,7 @@ export const deleteUser = async (token) => {
 }
 export const updateUser = async (FormBody,token) => {
     try {
-    const res = await fetch(`${procces.env.PATH_BACKEND}user/update`, {
+    const res = await fetch(`${API_URL}user/update`, {
             method: "PATCH",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -134,7 +132,7 @@ export const updateUser = async (FormBody,token) => {
 }
 export const changePassword = async (FormBody,token) => {
     try {
-    const res = await fetch(`${procces.env.PATH_BACKEND}user/changePassword`, {
+    const res = await fetch(`${API_URL}user/changePassword`, {
             method: "PATCH",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -150,7 +148,7 @@ export const changePassword = async (FormBody,token) => {
 }
 export const addCar = async (FormBody,token) => {
     try {
-    const res = await fetch(`${procces.env.PATH_BACKEND}vehicle/add`, {
+    const res = await fetch(`${API_URL}vehicle/add`, {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -165,7 +163,7 @@ export const addCar = async (FormBody,token) => {
 }
 export const getCarByUser = async (token) => {
     try {
-    const res = await fetch(`${procces.env.PATH_BACKEND}vehicle/byUser`, {
+    const res = await fetch(`${API_URL}vehicle/byUser`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -180,7 +178,7 @@ export const getCarByUser = async (token) => {
 }
 export const EditVehicle = async (FormBody,token) => {
      try {
-    const res = await fetch(`${procces.env.PATH_BACKEND}vehicle/edit`, {
+    const res = await fetch(`${API_URL}vehicle/edit`, {
             method: "PATCH",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -196,7 +194,7 @@ export const EditVehicle = async (FormBody,token) => {
 }
 export const DeleteVehicle = async (token,id) => {
      try {
-    const res = await fetch(`${procces.env.PATH_BACKEND}vehicle/delete/${id}`, {
+    const res = await fetch(`${API_URL}vehicle/delete/${id}`, {
             method: "DELETE",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -211,7 +209,7 @@ export const DeleteVehicle = async (token,id) => {
 }
 export const getCargoInfoByOne = async (token,id) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}cargos/info/${id}`, {
+        const res = await fetch(`${API_URL}cargos/info/${id}`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -226,7 +224,7 @@ export const getCargoInfoByOne = async (token,id) => {
 }
 export const getAllCars = async (token) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}vehicles`, {
+        const res = await fetch(`${API_URL}vehicles`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -241,7 +239,7 @@ export const getAllCars = async (token) => {
 }
 export const getOneCar = async (id,token) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}vehicles/${id}`, {
+        const res = await fetch(`${API_URL}vehicles/${id}`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -256,7 +254,7 @@ export const getOneCar = async (id,token) => {
 }
 export const getFiltredCar = async (FormBody,token) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}vehicles/filter`, {
+        const res = await fetch(`${API_URL}vehicles/filter`, {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -272,7 +270,7 @@ export const getFiltredCar = async (FormBody,token) => {
 }
 export const getBill = async (token) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}payments/bill`, {
+        const res = await fetch(`${API_URL}payments/bill`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -287,7 +285,7 @@ export const getBill = async (token) => {
 }
 export const createBill = async (FormBody, token) => {
      try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}payments/createBill`, {
+        const res = await fetch(`${API_URL}payments/createBill`, {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -303,7 +301,7 @@ export const createBill = async (FormBody, token) => {
 }
 export const createPayments = async (FormBody, token) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}payments/create`, {
+        const res = await fetch(`${API_URL}payments/create`, {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -319,7 +317,7 @@ export const createPayments = async (FormBody, token) => {
 }
 export const getPaymentsByUser = async (token) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}payments/byUser`, {
+        const res = await fetch(`${API_URL}payments/byUser`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -334,7 +332,7 @@ export const getPaymentsByUser = async (token) => {
 }
 export const depost = async (FormBody,token) => {
     try {
-        const res = await fetch(`${procces.env.PATH_BACKEND}payments/deposit`, {
+        const res = await fetch(`${API_URL}payments/deposit`, {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -352,7 +350,7 @@ export const updateAvatar = async (FormData,token) => {
     try {
 
         const response = await fetch(
-            `${procces.env.PATH_BACKEND}users/avatar`, {
+            `${API_URL}users/avatar`, {
                 method: "PATCH",
                 headers: {
                 'Authorization': `Bearer ${token}`
