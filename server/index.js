@@ -11,10 +11,13 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: 'https://cargo-flow-three.vercel.app',
+   origin: [
+    "https://cargo-flow-three.vercel.app",
+    "http://localhost:5173"
+  ],
   credentials: true
 }));
-
+// https://cargo-flow-three.vercel.app'
 app.use("/uploads", express.static("uploads"));
 
 app.use(userRoutes);
