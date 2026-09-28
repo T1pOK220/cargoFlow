@@ -1,0 +1,160 @@
+/* responsive.css — підключати ПІСЛЯ основного файлу стилів */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+img { max-width: 100%; }
+
+h2 { font-size: clamp(36px, 6vw, 80px); }
+
+/* ---------- Шапка + Hero: декор прив'язаний до відсотків, а не до px ---------- */
+header { flex-wrap: wrap; align-items: center; padding-right: 20px; }
+.navigation { margin-left: auto; flex-wrap: wrap; gap: 20px; }
+.login-btn { margin-left: 20px; }
+
+.Hero { height: clamp(640px, 100vh, 900px); }
+.description {
+  top: clamp(200px, 38vh, 340px);
+  left: clamp(20px, 4vw, 60px);
+  width: min(480px, calc(100% - 40px));
+}
+.blackBox { top: calc(100% - 300px); }
+.blackTriangle { left: calc(100% - 300px); top: calc(100% - 100px); }
+.blackBigTriangle { left: 22%; }
+.cards { justify-content: center; }
+.blacTriangleFooter { left: calc(100% - 400px); }
+
+/* ---------- Ноутбуки / малі десктопи ---------- */
+@media (max-width: 1200px) {
+  .navigation { gap: 16px; }
+  footer { height: auto; flex-wrap: wrap; gap: 30px; }
+  .line { display: none; }
+  .ready p { width: 100%; max-width: 600px; margin-right: 0; }
+}
+
+/* ---------- Планшети ---------- */
+@media (max-width: 992px) {
+  .aboutUs { height: auto; padding: 30px 0; }
+  .aboutUs div { flex-direction: column; text-align: center; }
+  .aboutUs div div { width: 100%; max-width: 600px; padding: 0 20px; }
+  .aboutUs div div p { margin-left: 0; }
+  .aboutUs div div a { margin-left: 0; }
+  .aboutUs img { height: auto; max-height: 300px; top: 0; }
+  hr { width: 30%; }
+
+  .benefits { height: auto; padding-bottom: 40px; }
+  .cards { flex-wrap: wrap; margin-left: 0; padding: 0 20px; }
+  .card { margin-left: 0; }
+  .orangreSmallTriangle { display: none; }
+
+  .BoxMain, .BoxAdviceAndCreate, .BackgroundProfile { flex-direction: column; }
+  .searchForm { width: 100%; max-width: 350px; height: auto; margin: 0 auto 30px; padding: 16px; }
+  .cargoCard { width: 100%; max-width: 400px; }
+  .cargosBox {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    margin-left: clamp(16px, 4vw, 60px);
+    height: auto;
+    max-height: 70vh;
+  }
+
+  .CreateBoxDiv { width: auto; max-width: calc(100% - 32px); margin-left: clamp(16px, 4vw, 60px); }
+  .cargoParamBox { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); grid-template-rows: auto; }
+  .advices { margin: 20px 16px; }
+  .appDon { width: 100%; height: auto; margin: 20px 0 0; }
+  .editBtn { margin-left: 0; }
+
+  .userBox { padding-left: 16px; padding-right: 16px; }
+  .userInfoBox { width: 100%; min-width: 0; }
+  .ToolsBox { width: auto; margin: 20px 16px; }
+  .profileNavigation { flex-wrap: wrap; margin-left: 0; }
+  .boxProfile { margin-left: auto; }
+  .myAnnouncements { grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); max-height: none; }
+  .settings { flex-wrap: wrap; }
+  .changeUserInfoBox { width: 100%; }
+  .editInput { width: 100%; }
+  .lableAvatar { margin-left: 20px; }
+
+  .car { width: 100%; max-width: 400px; }
+  .cars { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); height: auto; max-height: 70vh; }
+  .cardsCar {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    margin-left: clamp(16px, 4vw, 90px);
+    padding-right: clamp(16px, 4vw, 90px);
+    height: auto;
+    max-height: 80vh;
+  }
+  .filter-box, .FilterCarBox { width: 100%; max-width: 300px; }
+
+  .PayemntInfo { flex-wrap: wrap; gap: 16px; }
+  .senderBox { width: 100%; }
+  .colmuns { padding-right: 20px; }
+  .boxPayInfo { padding-right: 20px; }
+  .PaymentsHistory { overflow-x: auto; }
+}
+
+/* ---------- Модальні вікна: по центру вʼюпорта, з внутрішнім скролом ---------- */
+.wrapper { position: fixed; inset: 0; width: 100%; height: 100%; }
+.AddVehicle, .paymentCard, .CreateBillModal {
+  position: fixed;
+  left: 50%;
+  top: clamp(70px, 10vh, 120px);
+  transform: translateX(-50%);
+  max-height: calc(100vh - clamp(70px, 10vh, 120px) - 16px);
+  overflow-y: auto;
+}
+.AddVehicle { width: min(1100px, calc(100vw - 24px)); height: auto; }
+.paymentCard { width: min(460px, calc(100vw - 24px)); }
+.CreateBillModal { width: min(410px, calc(100vw - 24px)); }
+.formAddVehicle { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.notifySuccesBox, .notifyFailedBox { max-width: calc(100vw - 20px); }
+
+/* ---------- Логін / реєстрація / вихід ---------- */
+.backgroundLogin { height: auto; min-height: 100vh; min-height: 100dvh; width: 100%; padding: 20px; }
+.boxForm { width: 100%; max-width: 420px; padding: 0 20px 20px; }
+.backgroundRegistration { padding-left: 16px; padding-right: 16px; }
+.loguotBox { height: auto; min-height: 280px; padding: 20px; flex-wrap: wrap; text-align: center; }
+
+/* ---------- Телефони ---------- */
+@media (max-width: 768px) {
+  .logoPng { height: 64px; width: 64px; left: 10px; }
+  .logo { font-size: 22px; }
+  header { padding-right: 12px; }
+  .link, .login-btn, .toKnowMore { font-size: 16px; }
+  .login-btn { margin-left: 0; }
+
+  .orangeBox { width: 120vw; left: -10vw; }
+  .blackTriangle, .blackBigTriangle, .blacTriangleFooter { display: none; }
+  p { font-size: 16px; margin-top: 30px; margin-bottom: 40px; }
+
+  .aboutUs div div p { font-size: 18px; }
+  .headerBen hr, hr { width: 20%; }
+  h3, h5, .benefits div h5 { margin-left: 12px; margin-right: 12px; font-size: 18px; }
+  footer { padding: 30px 20px; }
+
+  .logInBtn { margin-left: 0; margin-top: 20px; }
+  .custom-checkbox { font-size: 18px; }
+  .colmuns { flex-wrap: wrap; gap: 8px; padding-left: 12px; }
+  .boxPayInfo { padding-left: 12px; }
+  .bill { flex-wrap: wrap; gap: 12px; }
+  .debit, .pay { padding: 12px 24px; }
+  .cargoCard { padding: 16px; }
+}
+
+/* ---------- Малі телефони ---------- */
+@media (max-width: 480px) {
+  h2 { font-size: 34px; }
+  .navigation { gap: 10px; }
+  .card { width: 100%; max-width: 250px; }
+  .notifySuccesBox, .notifyFailedBox { font-size: 16px; padding: 12px; right: 10px; left: 10px; width: auto; }
+  .notifyImg { height: 40px; width: 40px; margin-right: 12px; }
+  .routerBox { flex-wrap: wrap; gap: 8px; }
+  .CreateBoxDiv { padding: 14px; }
+  .locationBigBox, .locationBox { flex-wrap: wrap; }
+  .status { left: auto; right: 0; }
+}
+
+/* ---------- Низькі екрани (ландшафт на телефоні, маленькі ноутбуки) ---------- */
+@media (max-height: 700px) {
+  .Hero { height: auto; min-height: 640px; }
+  .backgroundLogin { padding: 20px 0; }
+}
