@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(cors({
    origin: [
     "https://cargo-flow-three.vercel.app",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "http://localhost:54190"
   ],
   credentials: true
 }));
