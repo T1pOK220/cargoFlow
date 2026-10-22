@@ -1,26 +1,23 @@
-import { users } from "../models/index.js";
-import { ThrowError } from "../utilits/error.js";
-import jwt from "jsonwebtoken"
-const SECRET_KEY = process.env.SECRET_KEY;
 export const AuthMiddleWare = async (req, res, next) => {
-   try {
-       const AuthToken = req.headers.authorization;
-       const token = AuthToken.split(" ");
-       console.log(token
-       )
-       if (token == undefined) ThrowError("токен незнайдено");
-       const verify = jwt.verify(token[1], SECRET_KEY);
-      if (!verify) ThrowError("токен не валідний");
-       const decoded = await jwt.decode(token[1]);
-       req.user = decoded.user;
-       console.log(decoded)
-    //    res.json({
-    //        message: "It`s work",
-    //        user: decoded.user,
-    //        statusCode: 200
-       //    })
-       next();
-   } catch (error) {
-    console.log(error)
-   }
-} 
+  try {
+    const AuthToken = req.headers.authorization;
+
+    if (!AuthToken || !AuthToken.startsWith("Bearer ")) {
+      ThrowError("Токен не знайдено", 401);
+    }
+
+    if (!SECRET_KEY) {
+      ThrowError("SECRET_KEY не налаштовано", 500);
+    }
+
+    const token = AuthToken.split(" ")[1];
+    const decoded = jwt.verify(token, SECRET_KEY);
+
+    req.user = decoded.user;
+    next();
+  } catch (error) {
+    return res.status(error.statusCode || 401).json({
+      message: error.message,
+    });
+  }
+};
