@@ -10,15 +10,22 @@ import path from "path";
 dotenv.config();
 const app = express();
 app.use(express.json());
-app.use(cors({
-   origin: [
-    "https://cargo-flow-three.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:54190"
-  ],
-  credentials: true
-}));
-// https://cargo-flow-three.vercel.app'
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (
+      !origin ||
+      /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin) ||
+      origin === 'https://cargo-flow-three.vercel.app'
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use("/uploads", express.static("uploads"));
 
 app.use(userRoutes);
