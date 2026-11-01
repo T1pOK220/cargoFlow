@@ -2,8 +2,8 @@ import { ThrowError } from "../utilits/error.js";
 import * as cargoService from "../services/cargoService.js";
 export const CargoCreate = async (req,res) => {
    try {
-     const { from_city, to_city, address_from, address_to, date_from, date_to, type, height, weight, width, length, amount ,description} = req.body;
-    if (from_city == "" || to_city == "", address_from == "" || address_to == "" || date_from == "" || date_to == "" || type == "" || height == "" || weight == "" || width == "" || length == "" || amount == "") ThrowError("Пусті поля",500);
+     const { from_city, to_city, address_from, address_to, date_from, date_to, type, height, weight, width, length, amount ,description,distance} = req.body;
+    if (from_city == "" || to_city == "", address_from == "" || address_to == "" || date_from == "" || date_to == "" || type == "" || height == "" || weight == "" || width == "" || length == "" || amount == "" || distance == "") ThrowError("Пусті поля",500);
        const sender_id = req.user.user_id;
        console.log("iд користувача",sender_id)
     if (sender_id == null) ThrowError("ід не знайдено", 400);
@@ -19,7 +19,7 @@ export const CargoCreate = async (req,res) => {
     })
        const route_id = route?.route_id;
          console.log("iд маршруту",cargo_id)
-    const announcement = await cargoService.createAnnouncement(date_from, date_to, cargo_id, route_id, sender_id);
+    const announcement = await cargoService.createAnnouncement(date_from, date_to, cargo_id, route_id, sender_id, distance);
     if(!announcement.success) return  res.status(400).json({
         message: "невдалось створити оголошення"
     })
