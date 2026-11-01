@@ -2,10 +2,10 @@ class Routes{
     constructor(db) {
         this.db = db;
     }
-    async AddRoute(from_city,to_city,address_from,address_to) {
+    async AddRoute(from_city,to_city,address_from,address_to,distance) {
         try {
-            const sql = "INSERT INTO routes (from_city,to_city,address_from,address_to) VALUES(?,?,?,?);"
-            const result = await this.db.Query(sql, [from_city, to_city, address_from, address_to]);
+            const sql = "INSERT INTO routes (from_city,to_city,address_from,address_to,distance) VALUES(?,?,?,?,?);"
+            const result = await this.db.Query(sql, [from_city, to_city, address_from, address_to, distance]);
             const route_id = result.insertId;
             return {
                 isCreate: true,
