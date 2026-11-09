@@ -135,3 +135,15 @@ export const uploadAvatarService = async (file,useR) => {
         user: useR
   };
 };
+export const getUserById = async (id) => {
+    try {
+        const userInBD = await users.getUserById(id);
+        if (!userInBD.succes) ThrowError("Невдалось отримати данні про користувача");
+        const user = userInBD?.user;
+        return user
+    }
+    catch (error) {
+        console.log(error);
+        return null;
+    }
+};

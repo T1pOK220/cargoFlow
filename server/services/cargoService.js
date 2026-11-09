@@ -20,10 +20,11 @@ export const createCargo = async (type,weight,description,amount,height,length,w
         }
     }
 }
-export const createRoute = async (from_city,to_city,address_from,address_to) => {
+export const createRoute = async (from_city,to_city,address_from,address_to,distance) => {
      try {
-         if (from_city == "" || to_city == "" || address_from == "" || address_to == "" ) ThrowError("Поле пусте", 500);
-        const isSuccess = await routes.AddRoute(from_city,to_city,address_from,address_to);
+        console.log(from_city,to_city,address_from,address_to,distance,"данні з фронту");
+         if (from_city == "" || to_city == "" || address_from == "" || address_to == "" || distance == "") ThrowError("Поле пусте", 500);
+        const isSuccess = await routes.AddRoute(from_city,to_city,address_from,address_to,distance);
          if (!isSuccess.isCreate) ThrowError("Невдалось додати маршрут");
          return ({
              success: true,

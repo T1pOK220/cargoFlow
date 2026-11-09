@@ -24,8 +24,9 @@ class Vehicles{
     }
     async getAllVehicles() {
         try {
-          const sql = "SELECT * from vehicles";
+          const sql = "SELECT * from vehicles JOIN routes ON vehicles.routes_route_id = routes.route_id";
             const row = await this.db.Query(sql);
+            console.log("DB VEHICLE :",row);
             return { succes: true, row:row};
         } catch (error) {
             console.log(error);

@@ -33,9 +33,9 @@ export const CarsByUser = async (req, res) => {
 }
 export const UpdateCar = async (req, res) => {
     try {
-       const {brand, model, plate_number, capacity, type, year, cargo_volume, status, description, v_avatar_url, id } = req.body;
+       const {brand, model, plate_number, capacity, type, year, cargo_volume, status, description, id } = req.body;
         if(!id)ThrowError("Id незнайдено",500)
-       const idEdit = await vehiclesService.editVehicle(brand, model, plate_number, capacity, type, year, cargo_volume, status, description, v_avatar_url, id);
+       const idEdit = await vehiclesService.editVehicle(brand, model, plate_number, capacity, type, year, cargo_volume, status, description, req.file, id);
        if (!idEdit.succes) ThrowError("Невдалось оновити характеристики транспорту");
        res.status(200).json({message:"Успішно змінено"})
    } catch (error) {
