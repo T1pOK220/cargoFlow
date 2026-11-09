@@ -4,11 +4,11 @@ dotenv.config();
 class CargoFlow{
     constructor() {
         this.pool = mysql2.createPool({
-            host: process.env.DB_HOST || "mysql-3116e2c1-oleg7pazuk-10ca.i.aivencloud.com",
-            user: process.env.DB_USER || "avnadmin",
-            port: process.env.DB_PORT || 21832,
-            database:process.env.DB_NAME || "cargoflow",
-            password: process.env.DB_PASSWORD,
+            host: process.env.MYSQL_HOST || "mysql-3116e2c1-oleg7pazuk-10ca.i.aivencloud.com",
+            user: process.env.MYSQL_USER || "avnadmin",
+            port: process.env.MYSQL_PORT || 21832,
+            database:process.env.MYSQL_DATABASE || "cargoflow",
+            password: process.env.MYSQL_PASSWORD,
            ssl: {
     rejectUnauthorized: false
   }

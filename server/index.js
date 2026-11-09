@@ -5,7 +5,6 @@ import userRoutes from "./routes/userRoutes.js";
 import cargoRoutes from "./routes/cargosRoutes.js";
 import vehicleRoutes from "./routes/vehicleRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
-import multer from "multer";
 import path from "path";
 dotenv.config();
 const app = express();
@@ -26,7 +25,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use("/uploads", express.static("uploads"));
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 app.use(userRoutes);
 app.use(cargoRoutes);

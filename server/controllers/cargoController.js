@@ -13,13 +13,13 @@ export const CargoCreate = async (req,res) => {
     })
        const cargo_id = cargo.cargo_id;
        console.log("iд вантажу",cargo_id)
-    const route = await cargoService.createRoute(from_city, to_city, address_from, address_to);
+    const route = await cargoService.createRoute(from_city, to_city, address_from, address_to, distance);
     if(!route.success) return  res.status(400).json({
         message:"невдалось додати інформацію про маршрут"
     })
        const route_id = route?.route_id;
          console.log("iд маршруту",cargo_id)
-    const announcement = await cargoService.createAnnouncement(date_from, date_to, cargo_id, route_id, sender_id, distance);
+    const announcement = await cargoService.createAnnouncement(date_from, date_to, cargo_id, route_id, sender_id);
     if(!announcement.success) return  res.status(400).json({
         message: "невдалось створити оголошення"
     })

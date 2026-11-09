@@ -10,4 +10,5 @@ router.delete("/api/user/delete", AuthMiddleWare, userContrller.deleteUser);
 router.patch("/api/user/update", AuthMiddleWare, userContrller.UpdateUser);
 router.patch("/api/user/changePassword", AuthMiddleWare, userContrller.ChangePassword);
 router.patch("/api/users/avatar", upload.single("avatar"), AuthMiddleWare, userContrller.uploadAvatarController);
+router.get("/api/user", AuthMiddleWare, userContrller.getUserById);
 export default router;

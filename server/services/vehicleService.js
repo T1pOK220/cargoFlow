@@ -31,9 +31,10 @@ export const getCarbyUser = async (id) => {
         }
     }
 }
-export const editVehicle = async (brand, model, plate_number, capacity, type, year, cargo_volume, status, description, v_avatar_url, id) => {
+export const editVehicle = async (brand, model, plate_number, capacity, type, year, cargo_volume, status, description, file, id) => {
     try {
-        const isEdit = await vehicles.updateVehicle(brand, model, plate_number, capacity, type, year, cargo_volume, status, description, v_avatar_url, id);
+        const avatarPath = file ? `/uploads/avatars/${file.filename}` : null;
+        const isEdit = await vehicles.updateVehicle(brand, model, plate_number, capacity, type, year, cargo_volume, status, description, avatarPath, id);
         if (!isEdit) ThrowError("Невдалось оновити характеристики авто");
          return {succes:true}
     } catch (error) {
